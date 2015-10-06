@@ -1,8 +1,8 @@
-package main
+package test
 
 import (
 )
 
-func getName() string {
+func GetName() string {
 	return "Hello World!"
 }
