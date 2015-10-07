@@ -3,8 +3,6 @@ package main
 import (
 	"fmt"
 	"github.com/Himself12794/learning-go/rang"
-	//"math/rand"
-	//"time"
 )
 
 func main() {
@@ -13,14 +11,18 @@ func main() {
 
 func testRange() {
 	
-	i := rang.Float64(3.14159265)
+	a := rang.NewItem( 5 )
+	b := rang.NewItem( 0.5 )
+	ar := []rang.WeightedItem{ a, b }
 	
-	a := rang.NewItem( 4 )
-	b := rang.NewItem( 5 )
-	//v := rang.NewItem( 70 )
-	
-	r := rang.RangeClosedInclusive( a, b )
-	
-	fmt.Println(r.Contains( i ))
-	
+	am := 1
+	var c rang.WeightedItem
+	for true {
+		c = rang.SelectRandomWeightedItem( ar )
+		if c.GetWeight() == b.GetWeight() {
+			break
+		}
+		am++
+	}
+	fmt.Println("Choice:", c.GetWeight(), "- Iterations to be chosen:", am)
 }

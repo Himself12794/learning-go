@@ -2,6 +2,7 @@ package rang
 
 import (
 //	"fmt"
+	"strconv"
 )
 
 func DoCompare(a, b Comparable) int {
@@ -67,74 +68,81 @@ type Range struct {
 		
 		return a && b
 	}
+	
+	func (self Range) String() string {
+		return "End A: " + 
+			strconv.FormatFloat(self.endA.Value(), 'f', -1, 64) + 
+			", End B: " + 
+			strconv.FormatFloat(self.endB.Value(), 'f', -1, 64)
+	}
 
 /**
  * Range of the form a < n < b 
  */
-func RangeClosedExclusive(a, b Comparable) *Range {
-	return &Range{inclusiveA: false, inclusiveB: false, openA: false, openB: false, endA: a, endB: b}
+func RangeClosedExclusive(a, b Comparable) Range {
+	return Range{inclusiveA: false, inclusiveB: false, openA: false, openB: false, endA: a, endB: b}
 }
 
 /**
  * Range of the form a <= n <= b 
  */
-func RangeClosedInclusive(a, b Comparable) *Range {
-	return &Range{inclusiveA: true, inclusiveB: true, openA: false, openB: false, endA: a, endB: b}
+func RangeClosedInclusive(a, b Comparable) Range {
+	return Range{inclusiveA: true, inclusiveB: true, openA: false, openB: false, endA: a, endB: b}
 }
 
 /**
  * Range of the form a <= n < b 
  */
-func RangeClosedInclusiveLeft(a, b Comparable) *Range {
-	return &Range{inclusiveA: true, inclusiveB: false, openA: false, openB: false, endA: a, endB: b}
+func RangeClosedInclusiveLeft(a, b Comparable) Range {
+	return Range{inclusiveA: true, inclusiveB: false, openA: false, openB: false, endA: a, endB: b}
 }
 
 /**
  * Range of the form a < n <= b 
  */
-func RangeClosedInclusiveRight(a, b Comparable) *Range {
-	return &Range{inclusiveA: false, inclusiveB: true, openA: false, openB: false, endA: a, endB: b}
+func RangeClosedInclusiveRight(a, b Comparable) Range {
+	return Range{inclusiveA: false, inclusiveB: true, openA: false, openB: false, endA: a, endB: b}
 }
 
 /**
  * Range containing all elements
  */
-func RangeAll() *Range {
-	return &Range{inclusiveA: true, inclusiveB: true, openA: true, openB: true, endA: nil, endB: nil}
+func RangeAll() Range {
+	return Range{inclusiveA: true, inclusiveB: true, openA: true, openB: true, endA: nil, endB: nil}
 }
 
 /**
  * Range of the form a <= n 
  */
-func RangeOpenLeftInclusive(a Comparable) *Range {
-	return &Range{inclusiveA: true, inclusiveB: true, openA: false, openB: true, endA: a, endB: nil}
+func RangeOpenLeftInclusive(a Comparable) Range {
+	return Range{inclusiveA: true, inclusiveB: true, openA: false, openB: true, endA: a, endB: nil}
 }
 
 /**
  * Range of the form a < n
  */
-func RangeOpenLeftExclusive(a Comparable) *Range {
-	return &Range{inclusiveA: false, inclusiveB: true, openA: false, openB: true, endA: a, endB: nil}
+func RangeOpenLeftExclusive(a Comparable) Range {
+	return Range{inclusiveA: false, inclusiveB: true, openA: false, openB: true, endA: a, endB: nil}
 }
 
 /**
  * Range of the form n <= b 
  */
-func RangeOpenRightInclusive(a Comparable) *Range {
-	return &Range{inclusiveA: true, inclusiveB: true, openA: true, openB: false, endA: nil, endB: a}
+func RangeOpenRightInclusive(a Comparable) Range {
+	return Range{inclusiveA: true, inclusiveB: true, openA: true, openB: false, endA: nil, endB: a}
 }
 
 /**
  * Range of the form n < b
  */
-func RangeOpenRightExclusive(a Comparable) *Range {
-	return &Range{inclusiveA: true, inclusiveB: false, openA: true, openB: false, endA: nil, endB: a}
+func RangeOpenRightExclusive(a Comparable) Range {
+	return Range{inclusiveA: true, inclusiveB: false, openA: true, openB: false, endA: nil, endB: a}
 }
 
 /**
  * Range Containing a single value
  */
-func RangeSingleton(a Comparable) *Range {
-	return &Range{inclusiveA: true, inclusiveB: true, openA: false, openB: false, endA: a, endB: a}
+func RangeSingleton(a Comparable) Range {
+	return Range{inclusiveA: true, inclusiveB: true, openA: false, openB: false, endA: a, endB: a}
 }
 
