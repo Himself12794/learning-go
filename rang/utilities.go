@@ -10,7 +10,6 @@ var randGenerator *rand.Rand = rand.New( rand.NewSource( time.Now().Unix() ))
 
 func SelectRandomWeightedItem(items []WeightedItem) WeightedItem {
 	ranges := make(map[Range]WeightedItem)
-	ranges[RangeSingleton( Float64(50) )] = items[0]
 	
 	total := 0.0
 	for i := 0; i < len(items); i++{
@@ -26,8 +25,10 @@ func SelectRandomWeightedItem(items []WeightedItem) WeightedItem {
 		}
 	}
 	
+	var choice float64
+	
 	randValue := randGenerator.Float64()
-	choice := randValue * total
+	choice = randValue * total
 	
 	for k, v := range ranges {
 		

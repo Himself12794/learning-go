@@ -11,18 +11,18 @@ func main() {
 
 func testRange() {
 	
-	a := rang.NewItem( 5 )
-	b := rang.NewItem( 0.5 )
+	a := rang.NewItem( 10 )
+	b := rang.NewItem( 1 )
 	ar := []rang.WeightedItem{ a, b }
+	valMap := make(map[*rang.Item]int)
 	
-	am := 1
-	var c rang.WeightedItem
-	for true {
-		c = rang.SelectRandomWeightedItem( ar )
-		if c.GetWeight() == b.GetWeight() {
-			break
-		}
-		am++
+	var c *rang.Item
+	for i := 0; i < 500; i++ {
+		c = rang.SelectRandomWeightedItem( ar ).(*rang.Item)
+		valMap[c] += 1
 	}
-	fmt.Println("Choice:", c.GetWeight(), "- Iterations to be chosen:", am)
+	
+	for k, v := range valMap {
+		fmt.Println("Value:", k.GetWeight(), "was chosen:", v, "times")
+	} 
 }
