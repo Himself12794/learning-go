@@ -28,7 +28,7 @@ func (self *Item) SetWeight(weight float64) {
 	self.Weight = weight
 }
 
-func (self Item) Value() float64 {
+func (self Item) ComparableValue() float64 {
 	return self.GetWeight()
 }
 
