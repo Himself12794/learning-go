@@ -1,6 +1,7 @@
 package rang
 
 import (
+	"reflect"
 )
 
 func GetName() string {
@@ -30,6 +31,29 @@ func (self *Item) SetWeight(weight float64) {
 func (self Item) Value() float64 {
 	return self.GetWeight()
 }
+
+func (self Item) Compare(v interface{}) int16 {
+	
+	logic := func (other float64) int16 {
+		if other == self.GetWeight() { 
+			return 0 
+		} else if self.GetWeight() > other { 
+			return 1 
+		} else { 
+			return -1 
+		}
+	}
+	
+	if reflect.TypeOf(self) == reflect.TypeOf(v) {
+		return logic(v.(Item).GetWeight()) 
+	} else if reflect.TypeOf(&self) == reflect.TypeOf(v) {
+		return logic(v.(*Item).GetWeight())		
+	}
+	
+	return -1
+}
+
+
 
 
 /*func DoCompare(a, b Comparable) int32 {

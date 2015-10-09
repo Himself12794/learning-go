@@ -22,6 +22,10 @@ func DoCompare(a, b Comparable) int {
 	return v 
 }
 
+type Comparable2 interface {
+	Compare(v interface{}) int16
+}
+
 type Comparable interface {
 	Value() float64
 }

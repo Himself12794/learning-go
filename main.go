@@ -25,4 +25,6 @@ func testRange() {
 	for k, v := range valMap {
 		fmt.Println("Value:", k.GetWeight(), "was chosen:", v, "times")
 	} 
+	
+	fmt.Println( a.Compare( b ) )
 }

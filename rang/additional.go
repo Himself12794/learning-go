@@ -12,7 +12,7 @@ type CompBase struct {
 		return self.v;
 	}
 
-// Static methods
+// Static methods - these allow translation of native numbers to be comparable
 func Byte(v byte) Comparable {
 	return &CompBase{float64(v)}
 }
