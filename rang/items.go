@@ -1,9 +1,5 @@
 package rang
 
-import (
-	"reflect"
-)
-
 func GetName() string {
 	return "Hello World!"
 }
@@ -44,10 +40,10 @@ func (self Item) Compare(v interface{}) int16 {
 		}
 	}
 	
-	if reflect.TypeOf(self) == reflect.TypeOf(v) {
-		return logic(v.(Item).GetWeight()) 
-	} else if reflect.TypeOf(&self) == reflect.TypeOf(v) {
-		return logic(v.(*Item).GetWeight())		
+	if i, ok := v.(Item); ok {
+		return logic(i.GetWeight()) 
+	} else if i, ok := v.(*Item); ok {
+		return logic(i.GetWeight())		
 	}
 	
 	return -1
