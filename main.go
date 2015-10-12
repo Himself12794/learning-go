@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	//"sort"
 	"github.com/Himself12794/learning-go/rang"
 )
 
@@ -22,9 +23,17 @@ func testRange() {
 		valMap[c] += 1
 	}
 	
+	keys := make([]rang.Comparable, len(valMap))
+	
+	i := 0
 	for k, v := range valMap {
+		keys[i] = k
 		fmt.Println("Value:", k.GetWeight(), "was chosen:", v, "times")
 	} 
 	
-	fmt.Println( a.Compare( b ) )
+	rang.InsertionSort(keys)
+	
+	for _, v := range keys {
+		fmt.Println(v)
+	}
 }
