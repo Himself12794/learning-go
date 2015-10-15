@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	//"sort"
 	"github.com/Himself12794/learning-go/rang"
 	loc "github.com/Himself12794/learning-go/location"
 )
@@ -25,7 +26,11 @@ func testRange() {
 		valMap[c] += 1
 	}
 	
+	keys := make([]rang.Comparable, len(valMap))
+	
+	i := 0
 	for k, v := range valMap {
+		keys[i] = k
 		fmt.Println("Value:", k.GetWeight(), "was chosen:", v, "times")
 	} 
 	
@@ -48,4 +53,6 @@ func testLocation() {
 	fmt.Println(v1.DotProduct(v2))
 	fmt.Println(v1.Normalize())
 	fmt.Println(v3.CrossProduct(v2))
+	
+
 }

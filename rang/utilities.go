@@ -40,3 +40,16 @@ func SelectRandomWeightedItem(items []WeightedItem) WeightedItem {
 	
 	return nil
 }
+
+func InsertionSort(items []Comparable) {
+	
+	 for i := 1; i < len(items) - 1; i++ {
+    	x := items[i]
+    	var j int
+    	for j = i - 1; j >= 0 && x.Compare(items[j]) <= -1; j--  {
+       		items[j + 1] = items[j]
+    	}
+    	items[j + 1] = x
+	 }
+	
+}
