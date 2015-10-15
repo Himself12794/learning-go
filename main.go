@@ -3,10 +3,13 @@ package main
 import (
 	"fmt"
 	"github.com/Himself12794/learning-go/rang"
+	loc "github.com/Himself12794/learning-go/location"
 )
 
 func main() {
-	testRange()
+	//testRange()
+	testLocation()
+	testFunc()
 }
 
 func testRange() {
@@ -27,4 +30,22 @@ func testRange() {
 	} 
 	
 	fmt.Println( a.Compare( b ) )
+}
+
+func testFunc() {
+	f := func (t rang.Float64) {
+		fmt.Println(t.ComparableValue())
+	}
+	
+	f(6.5)
+}
+
+func testLocation() {
+	v1 := loc.NewVec3(3, 4, 0)
+	v2 := loc.NewVec3(1, 1, 1)
+	v3 := loc.NewVec3(0.54, 10.44488522, 0.128872132)
+	
+	fmt.Println(v1.DotProduct(v2))
+	fmt.Println(v1.Normalize())
+	fmt.Println(v3.CrossProduct(v2))
 }

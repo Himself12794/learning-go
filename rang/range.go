@@ -7,9 +7,6 @@ import (
 func DoCompare(a, b ComparableR) int {
 	var v int
 	
-	//fmt.Println("Compare value a: ", a.Value())
-	//fmt.Println("Compare value b: ", b.Value())
-	
 	if a.ComparableValue() > b.ComparableValue() { 
 		v = 1 
 	} else if a.ComparableValue() == b.ComparableValue() { 

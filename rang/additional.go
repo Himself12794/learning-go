@@ -1,5 +1,11 @@
 package rang
 
+type Float64 float64
+func (s Float64) ComparableValue() float64 {
+	return float64(s)
+}
+
+
 type CompBase struct {
 	v float64
 }
@@ -25,9 +31,9 @@ func Float32(v float32) ComparableR {
 	return &CompBase{float64(v)}
 }
 
-func Float64(v float64) ComparableR {
+/*func Float64(v float64) ComparableR {
 	return &CompBase{v}
-}
+}*/
 
 func UInt(v uint) ComparableR {
 	return &CompBase{float64(v)}
