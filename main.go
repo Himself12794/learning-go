@@ -12,6 +12,7 @@ func main() {
 	//testRange()
 	testLocation()
 	testFunc()
+	fmt.PrintF(oauth.Code)
 }
 
 func testRange() {
