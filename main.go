@@ -5,14 +5,14 @@ import (
 	//"sort"
 	"github.com/Himself12794/learning-go/rang"
 	loc "github.com/Himself12794/learning-go/location"
-	oauth "github.com/go-oauth2/oauth2"
+	//oauth "github.com/go-oauth2/oauth2"
 )
 
 func main() {
 	//testRange()
 	testLocation()
 	testFunc()
-	fmt.Printf(oauth.Code)
+	//fmt.Printf(oauth.Code)
 }
 
 func testRange() {
